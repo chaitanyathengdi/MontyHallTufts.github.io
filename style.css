@@ -17,7 +17,7 @@
   border-radius: 10px;
   width: 50%;
   height: 150px;
-  overflow: scroll;
+  overflow-y: scroll;
   min-width: 200px;
   text-align: justify;
   text-justify: inter-word;
@@ -29,19 +29,20 @@
   border-radius: 10px;
   width: 50%;
   height: 300px;
-  overflow: scroll;
+  overflow-y: scroll;
   text-align: justify;
   text-justify: inter-word;
   padding-right: 5px;
 }
 
-.History-cont, .Abstract-cont {
+.History-cont, .Abstract-cont, .Sim-cont {
   display: flex;
   justify-content: space-around;
+  background-color: #ffaf71
 }
 
 html {
-  background-color: #83677B
+  background-color: #9abfff
 }
 
 .pic2 {
@@ -52,4 +53,27 @@ html {
 .pic1 {
   width: 400px;
   height: 300px;
+}
+
+.Instructions, .Sim, #output{
+  border: 7px solid black;
+  border-radius: 10px;
+  height: 200px;
+  width: 25%
+}
+
+::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
 }

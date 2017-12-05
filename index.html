@@ -12,7 +12,7 @@
 <h4> by Patrick Zwierzynski <br/> EC-24 Final Project Submission </h4>
 <hr/>
 
-<h2> A Brief History... </h2>
+<h2> - A Brief History - </h2>
 <div class="History-cont">
   <div class="HistoryPic1">
     <img src="images/monty_LMAD.jpg" class="pic2"/>
@@ -35,23 +35,69 @@
   </div>
 </div>
 
-<h2> Abstract </h2>
+<h2> - The Problem - </h2>
 <div class="Abstract-cont">
   <div class="AbstractPic">
     <img src="images/doors.jpeg" class="pic1"/>
   </div>
   <div class="AbstractPar">
-    <p>
-      Suppose you're on a game show, and you're given the choice of three doors.
+    <p style="padding-left: 5px; margin-top: 5px;">
+      The question Marilyn was asked on her column in 1990, which eventually
+      became known as the Monty Hall Problem, is as followed: <br/> <br/>
+
+      "Suppose you're on a game show, and you're given the choice of three doors.
       Behind one door is a car, behind the others, goats. You pick a door, say
       #1, and the host, who knows what's behind the doors, opens another door,
       say #3, which has a goat. He says to you, "Do you want to pick door #2?"
-      Is it to your advantage to switch your choice of doors?
+      Is it to your advantage to switch your choice of doors?" <br/> <br/>
+
+      The answer to the Monty Hall Problem is that it is always better to switch
+      doors, under the assumption that the door being revealed to you always has
+      a goat behind it.
     </p>
   </div>
 </div>
 
-<h2> Motivation </h2>
+<h2> - Motivation - </h2>
+
+<h2> - Simulation - </h2>
+<div class="Sim-cont">
+  <div class="Instructions">
+    <h4> Instructions </h4>
+    <p>
+      words words words words words words words words words
+    </p>
+  </div>
+  <div class="Sim">
+    <form action="#">
+      Number of Games to be Simulated:<br>
+      <input type="number" name="numgames" value="100"><br><br>
+      Visualization? <br>
+      <input type="radio" name="isVis" value="true" checked> Yes<br>
+      <input type="radio" name="isVis" value="false"> No<br>
+      <input type="button" value="Run Simulation!" onclick="runmain()">
+      <input type="button" value="Reset Default" onclick="runreset()">
+    </form>
+  </div>
+  <div id="output"></div>
+</div>
+
+<h2> - Analysis - </h2>
+
+<h2> - Final Thoughts - </h2>
+
+<script>
+function runmain() {
+  var outputs = document.getElementById("output");
+  var numgames = document.querySelector('input[type="number"]').value
+  outputs.innerHTML = numgames
+}
+
+function runreset() {
+  var outputs = document.getElementById("output");
+  outputs.innerHTML = "<p></p>"
+}
+</script>
 
 </body>
 
