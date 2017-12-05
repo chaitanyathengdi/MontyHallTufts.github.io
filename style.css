@@ -1,0 +1,55 @@
+.HistoryPic1, .HistoryPic2 {
+  width: 200px;
+  height: 150px;
+  border: 7px solid black;
+  border-radius: 10px;
+}
+
+.AbstractPic {
+  width: 400px;
+  height: 300px;
+  border: 7px solid black;
+  border-radius: 10px;
+}
+
+.HistoryPar {
+  border: 7px solid black;
+  border-radius: 10px;
+  width: 50%;
+  height: 150px;
+  overflow: scroll;
+  min-width: 200px;
+  text-align: justify;
+  text-justify: inter-word;
+  padding-right: 5px;
+}
+
+.AbstractPar {
+  border: 7px solid black;
+  border-radius: 10px;
+  width: 50%;
+  height: 300px;
+  overflow: scroll;
+  text-align: justify;
+  text-justify: inter-word;
+  padding-right: 5px;
+}
+
+.History-cont, .Abstract-cont {
+  display: flex;
+  justify-content: space-around;
+}
+
+html {
+  background-color: #83677B
+}
+
+.pic2 {
+  height: 150px;
+  width: 200px;
+}
+
+.pic1 {
+  width: 400px;
+  height: 300px;
+}

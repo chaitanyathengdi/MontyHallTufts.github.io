@@ -1,1 +1,4 @@
-# EC24-Final-Project---F2017
+Monty Hall Problem Simulation
+by Patrick Zwierzynski
+
+EC-24 Final Project
