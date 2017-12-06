@@ -44,12 +44,12 @@
     <p style="padding-left: 5px; margin-top: 5px;">
       The question Marilyn was asked on her column in 1990, which eventually
       became known as the Monty Hall Problem, is as followed: <br/> <br/>
-
+      <b>
       "Suppose you're on a game show, and you're given the choice of three doors.
       Behind one door is a car, behind the others, goats. You pick a door, say
       #1, and the host, who knows what's behind the doors, opens another door,
       say #3, which has a goat. He says to you, "Do you want to pick door #2?"
-      Is it to your advantage to switch your choice of doors?" <br/> <br/>
+      Is it to your advantage to switch your choice of doors?"</b> <br/> <br/>
 
       The answer to the Monty Hall Problem is that it is always better to switch
       doors, under the assumption that the door being revealed to you always has
@@ -63,23 +63,39 @@
 <h2> - Simulation - </h2>
 <div class="Sim-cont">
   <div class="Instructions">
-    <h4> Instructions </h4>
+    <h3> Instructions </h3>
     <p>
-      words words words words words words words words words
+      To run a simulation, simply enter an integer number of games to simulate
+      and click the "Run Simulation!" button. <br> <br>
+
+      Each game will be
+      simulated once using the <b>Never Switching Strategy</b> and once using the
+      <b>Always Switching Strategy</b>. The number of cumulative wins as well as a
+      cumulative win percentage, for both strategies is displayed. <br> <br>
+
+      You may stop the simulation using the "Stop Simulation" button, but once
+      the simulation is stopped it <b> MAY NOT </b> be resumed again.
     </p>
   </div>
   <div class="Sim">
+    <h3> Input Control </h3>
     <form action="#">
-      Number of Games to be Simulated:<br>
+      <br>Number of Games:<br>
       <input type="number" name="numgames" value="100"><br><br>
-      Visualization? <br>
-      <input type="radio" name="isVis" value="true" checked> Yes<br>
-      <input type="radio" name="isVis" value="false"> No<br>
       <input type="button" value="Run Simulation!" onclick="runmain()">
-      <input type="button" value="Reset Default" onclick="runreset()">
+      <input type="button" value="Reset Default" onclick="runreset()"> <br> <br>
+      <input type="button" value="Stop Simulation" id="stoy">
     </form>
   </div>
-  <div id="output"></div>
+  <div id="output">
+    <h3> Simulation Results </h3>
+    <div id="gamecount"> Simulating Game: N/A </div>
+    <div id="statusD"> Status: Waiting for Input </div>
+    <h4> Never Switching Strategy</h4>
+    <div id="NoSwitch"> Wins: N/A, %Win: N/A </div>
+    <h4> Always Switching Strategy </h4>
+    <div id="Switch"> Wins: N/A, %Win: N/A </div>
+  </div>
 </div>
 
 <h2> - Analysis - </h2>
@@ -87,16 +103,82 @@
 <h2> - Final Thoughts - </h2>
 
 <script>
+
 function runmain() {
-  var outputs = document.getElementById("output");
-  var numgames = document.querySelector('input[type="number"]').value
-  outputs.innerHTML = numgames
+
+  document.getElementById("stoy").addEventListener("click", midstop);
+
+  var count   = document.getElementById("gamecount");
+  var statusD   = document.getElementById("statusD");
+  var outswitch = document.getElementById("Switch");
+  var noswitch  = document.getElementById("NoSwitch")
+  var numgames  = document.querySelector('input[type="number"]');
+  numgames = numgames.value;
+  var initcount = numgames; var isDone = false;
+  var win1 = 0; var win2 = 0;
+  var iStr1 = ""; var iStr2 = ""; var iStr3 = "<b>Running!</b>";
+
+  function winNoSwitch () {
+    //returns true if win, false otherwise.
+    // randomly choose the winning door (1, 2, or 3)
+    var winnerDoor = Math.floor(Math.random() * 3) + 1;
+    // randomly choose a door (1, 2, or 3)
+    var playerDoor = Math.floor(Math.random() * 3) + 1;
+    // because we are not switching, check if door player chose is
+    // the winning door.
+    return (winnerDoor == playerDoor);
+  }
+
+  function winSwitch () {
+    //returns true if win, false otherwise.
+    // randomly choose the winning door (0, 1, or 2)
+    var winnerDoor = Math.floor(Math.random() * 3) + 1;
+    // randomly choose a door (0, 1, or 2)
+    var playerDoor = Math.floor(Math.random() * 3) + 1;
+    // From the perspective on Monty, you want to reveal the door that neither
+    // you nor the player chose. If the player and Monty chose different doors,
+    // then Monty will reveal the third door, and thus the player, who always
+    // switches, will choose Monty's door. If Monty and the player chose the
+    // same door initially, then when the player switches doors eventually, he
+    // will no longer be selecting the winning door. Therefore if their guesses
+    // were initially different, then player wins, else he losses.
+    return (playerDoor != winnerDoor);
+  }
+
+  sim = function() {
+    if (winNoSwitch()) {win1++;}
+    if (winSwitch()) {win2++;}
+    if (numgames == 1) {iStr3 = "Done!"}
+    iStr1 = ((win1/(initcount - numgames)) * 100).toFixed(2).toString();
+    iStr2 = ((win2/(initcount - numgames)) * 100).toFixed(2).toString();
+    count.innerHTML = "Simulating Game: " + (initcount - numgames + 1).toString();
+    statusD.innerHTML = "Status: " + iStr3
+    noswitch.innerHTML = "Wins: " + win1.toString() + ", %Win: " + iStr1 + "%";
+    outswitch.innerHTML = "Wins: " + win2.toString() + ", %Win: " + iStr2 + "%";
+    numgames--;
+    if ((numgames > 0) && (!isDone)) {
+      window.setTimeout(sim, 25);
+    }
+  };
+  sim();
+
+  function midstop () {
+    isDone = true; iStr3 = "Stopped!"
+  }
+
 }
 
 function runreset() {
-  var outputs = document.getElementById("output");
-  outputs.innerHTML = "<p></p>"
+  var count = document.getElementById("gamecount");
+  var statusD   = document.getElementById("statusD");
+  var outswitch = document.getElementById("Switch");
+  var noswitch  = document.getElementById("NoSwitch");
+  count.innerHTML   = "Simulating Game: N/A"
+  statusD.innerHTML = "Status: N/A"
+  outswitch.innerHTML = "Wins: N/A, %Win: N/A"
+  noswitch.innerHTML  = "Wins: N/A, %Win: N/A"
 }
+
 </script>
 
 </body>
