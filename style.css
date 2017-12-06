@@ -29,17 +29,29 @@
   border-radius: 10px;
   width: 50%;
   min-width: 200px;
-  height: 300px;
-  overflow-y: scroll;
+  height: 350px;
   text-align: justify;
   text-justify: inter-word;
   padding-right: 5px;
+  display: flex;
+  align-items: center;
 }
 
-.History-cont, .Abstract-cont, .Sim-cont {
+.MotivationPar {
+  border: 7px solid black;
+  border-radius: 10px;
+  min-width: 350px;
+}
+
+.History-cont, .Abstract-cont, .Sim-cont, .Motivation-cont {
   display: flex;
   justify-content: space-around;
-  background-color: #ffaf71
+  background-color: #ffaf71;
+  border-radius: 10px;
+}
+
+.Abstract-cont {
+    align-items: center;
 }
 
 html {
