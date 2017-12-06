@@ -1,31 +1,47 @@
 .HistoryPic1, .HistoryPic2 {
   width: 200px;
   height: 150px;
-  border: 7px solid black;
+  border: 7px solid #FFC93C;
   border-radius: 10px;
 }
 
 .AbstractPic {
   width: 400px;
   height: 300px;
-  border: 7px solid black;
+  border: 7px solid #FFC93C;
   border-radius: 10px;
 }
 
 .HistoryPar {
-  border: 7px solid black;
+  border: 7px solid #FF6F3C;
   border-radius: 10px;
   width: 50%;
-  height: 150px;
-  overflow-y: scroll;
   min-width: 200px;
   text-align: justify;
   text-justify: inter-word;
   padding-right: 5px;
+  overflow-y: scroll;
+}
+
+p {
+  background-color: #ffaf71;
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-top: 10px;
+  margin-top: 5px;
+  padding-bottom: 10px;
+}
+
+ol {
+  background-color: #ffaf71;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .AbstractPar {
-  border: 7px solid black;
+  border: 7px solid #FF6F3C;
   border-radius: 10px;
   width: 50%;
   min-width: 200px;
@@ -34,11 +50,11 @@
   padding-right: 5px;
   display: flex;
   align-items: center;
-  overflow-y: scroll;
+  background-color: ffaf71
 }
 
 .MotivationPar {
-  border: 7px solid black;
+  border: 7px solid #FF6F3C;
   border-radius: 10px;
   min-width: 350px;
 }
@@ -46,8 +62,19 @@
 .History-cont, .Abstract-cont, .Sim-cont, .Motivation-cont {
   display: flex;
   justify-content: space-around;
-  background-color: #ffaf71;
+  background-color: #FF6F3C;
+  border: 7px solid #FFC93C;
   border-radius: 10px;
+}
+
+.History-cont {
+  align-items: center;
+}
+
+.Sim-cont {
+  background-color: #155263;
+  align-items: center;
+  border-color: #155263;
 }
 
 .Abstract-cont {
@@ -55,7 +82,7 @@
 }
 
 .AnalysisPar1, .AnalysisPar2 {
-  border: 7px solid black;
+  border: 7px solid #FF6F3C;
   border-radius: 10px;
   padding-left: 5px;
   padding-right: 5px;
@@ -67,29 +94,32 @@
   margin-bottom: 20px;
 }
 
-.AnalysisPar2 {
-  overflow: scroll;
-}
-
 .FinalPar {
   background-color: #ffaf71;
-  border: 7px solid black;
+  border: 7px solid #FF6F3C;
   border-radius: 10px;
   text-align: justify;
   text-justify: inter-word;
   padding-right: 5px;
+
 }
 
 .Analysis-cont {
-  background-color: #ffaf71;
+  background-color: #FF6F3C;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  border: 7px solid #FFC93C;
 }
 
 html {
-  background-color: #9abfff
+  background-color: #155263;
+  font-family: 'Oxygen', sans-serif;
+}
+
+h1, h2 {
+  color: #FF6F3C;
 }
 
 .pic2 {
@@ -103,18 +133,24 @@ html {
 }
 
 .Instructions, .Sim, #output {
-  border: 7px solid black;
+  border: 7px solid #FFC93C;
   border-radius: 10px;
-  height: 350px;
+  height: 410px;
   min-width: 250px;
   padding-left: 5px;
   padding-right: 5px;
+  background-color: #FF6F3C;
 }
 
 .Instructions {
   text-align: justify;
   text-justify: inter-word;
+  height: 430px;
   width: 30%;
+}
+
+.Sim {
+  height: 250px;
 }
 
 ::-webkit-scrollbar
@@ -131,4 +167,8 @@ html {
 ::-webkit-scrollbar-thumb
 {
   background: rgba(0, 0, 0, 0.5);
+}
+
+hr {
+  border-color: #FF6F3C;
 }
