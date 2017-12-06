@@ -29,12 +29,12 @@
   border-radius: 10px;
   width: 50%;
   min-width: 200px;
-  height: 350px;
   text-align: justify;
   text-justify: inter-word;
   padding-right: 5px;
   display: flex;
   align-items: center;
+  overflow-y: scroll;
 }
 
 .MotivationPar {
@@ -69,6 +69,15 @@
 
 .AnalysisPar2 {
   overflow: scroll;
+}
+
+.FinalPar {
+  background-color: #ffaf71;
+  border: 7px solid black;
+  border-radius: 10px;
+  text-align: justify;
+  text-justify: inter-word;
+  padding-right: 5px;
 }
 
 .Analysis-cont {
