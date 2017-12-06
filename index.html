@@ -9,7 +9,10 @@
 <body>
 
 <h1> Monty Hall Game Simulation</h1>
-<h4> by Patrick Zwierzynski <br/> EC-24 Final Project Submission </h4>
+<h4>
+  by Patrick Zwierzynski <br/>
+  Tufts University : EC-24 Final Project
+</h4>
 <hr/>
 
 <h2> - A Brief History - </h2>
@@ -42,9 +45,9 @@
   </div>
   <div class="AbstractPar">
     <p style="padding-left: 5px; margin-top: 5px">
-      The question Marilyn was originally asked on her column in 1990, which eventually
-      became known as the Monty Hall Problem, is as followed: <br><br>
-      <b>
+      The question that was originally asked on Savant's column in 1990, which
+      eventually became known as the Monty Hall Problem, is as followed:
+      <br><br><b>
       "Suppose you're on a game show, and you're given the choice of three doors.
       Behind one door is a car, behind the others, goats. You pick a door, say
       #1, and the host, who knows what's behind the doors, opens another door,
@@ -131,8 +134,104 @@
 </div>
 
 <h2> - Analysis - </h2>
+<div class="Analysis-cont">
+  <div class="AnalysisPar1">
+    <h3> Intuitive Explanation </h3>
+    <p style="padding-left: 5px; margin-top: 5px;">
+      As the number of games being simulated increases, we see that the win
+      percentages converge towards the results outlined in "The Problem"
+      section. More specifically, the Never Switching Strategy converges to
+      <b>33.33% or one-third</b>, while the Always Switching Strategy converges
+      to <b> 66.67% or two-thirds</b>.
+
+      Through writing the program, I realized why this result makes sense
+      intuitively. Say the winning door is chosen randomly by Monty, and the
+      player door is chosen randomly by a player. From the perspective on Monty,
+      you want to reveal a losing door that neither you nor the player chose. If
+      the player and Monty chose different doors, then Monty will reveal the
+      third door, and thus the player, who always switches, will choose Monty's
+      door and win the game. If Monty and the player chose the same door
+      initially, then when the player switches doors eventually, he will no
+      longer be selecting the winning door. Therefore, if the player initially
+      chooses a door that is different from Monty's door, then the player wins,
+      as the rest of the game forces the player to switch to the winning door.
+      <b> The probability that the player chooses a door that is different from
+      the winning door Monty chose, is two-thirds</b>.
+    </p>
+  </div>
+  <div class="AnalysisPar2">
+    <h3> Explanation using Game Theory / Statistical Concepts </h3>
+    <p style="padding-left: 5px; margin-top: 5px;">
+      The Monty Hall Problem can be explained using Bayes's rule. Given two
+      random events A and B, Bayes rule can be described as followed:<br>
+      $$P(A | B) = {P (B | A) * P(A) \over P(B)}$$
+      where <b> P(A | B) </b> is a <b>conditional probability</b> meaning the
+      probability that A occurs <i> given </i> that B had occurred. We know
+      <b> Monty randomly decides the winning door with probability one-third</b>
+      . Without loss of generality, suppose that the player chooses Door 1, and
+      Monty will then later reveal Door 2 (a losing door). The player then has
+      to then decide whether to stay with Door 1 or switch to Door 3 knowing
+      that Door 2 results in a loss. Using Bayes rule, we can calculate the
+      conditional probability, i.e., the probability that switching to Door 3
+      wins the car <i> given </i> (denoted using "|") that Monty revealed Door 2
+      as a losing door: <br>
+      $$P(\text{Door 3 wins | Monty opens Door 2}) =
+      {P(\text{Monty opens Door 2 | Door 3 wins}) *
+       P(\text {Door 3 wins}) \over
+      P(\text{Monty opens Door 2})}$$
+
+      To determine <b> P(Monty opens Door 2 | Door 3 wins) </b>, consider the
+      state of the game. We know the player has selected Door 1 at the start of
+      the game. By the premise of conditional probability, we consider the
+      scenario where we are given that Door 3 is the winning door. Because <b>
+      Monty always reveals a losing door</b>, and because Monty cannot reveal
+      the contents of Door 1 (the door we chose), Monty has no choice but to
+      reveal Door 2, and have the player choose between Door 3 (the winning
+      door) and Door 1 (the player's original pick). Thus,
+      $$P(\text {Monty opens Door 2 | Door 3 wins}) = 1$$
+
+      On the other hand, say we were given that the player's original pick,
+      Door 1, wins the game. Then Monty has a choice of either revealing Door 2
+      or Door 3 to the player (as both are losing doors). Thus,
+      $$P(\text {Monty opens Door 2 | Door 1 wins}) = {1 \over 2}$$
+
+      We can then calculate the <b>P(Monty opens Door 2)</b> by: <br>
+      $$P(\text {Monty opens Door 2}) =
+      P(\text {Monty opens Door 2 and Door 1 wins}) +
+      P(\text {Monty opens Door 2 and Door 3 wins})$$ <br>
+      where, <br>
+      $$P(\text {Monty opens Door 2 and Door 1 wins}) =
+      P(\text {Monty opens Door 2 | Door 1 wins}) *
+      P(\text {Door 1 wins})$$
+      $$ = {1 \over 2} * {1 \over 3} = {1 \over 6}$$
+      $$P(\text {Monty opens Door 2 and Door 3 wins}) =
+      P(\text {Monty opens Door 2 | Door 3 wins}) *
+      P(\text {Door 3 wins})$$
+      $$ = 1 * {1 \over 3} = {1 \over 3}$$
+      thus, <br>
+      $$P(\text {Monty opens Door 2}) =
+      {1 \over 6} + {1 \over 3} = {1 \over 2}$$
+
+      Substituting back into the original equation gives us: <br>
+      $$P(\text {Door 3 wins | Monty opens Door 2}) =
+      {1 * {1 \over 3} \over {1 \over 2}} = {2 \over 3}$$
+
+      The resulting probability above is consistent with the simulation results.
+      Because the argument above was made without loss of generality, i.e.,
+      the doors chosen in the example were chosen arbitrarily (and without any
+      assumptions), then we see that the strategy of always switching doors will
+      win with a probability of two-thirds. The proof for why never switching
+      doors results in the lower probability of one-third can be found on pages
+      453-454 in our <i> Games, Strategies, and Decision Making </i> textbook by
+      Joseph E. Harrington, Jr..
+    </p>
+  </div>
+</div>
 
 <h2> - Final Thoughts - </h2>
+
+<hr/>
+<h4> References </h4>
 
 <script>
 
@@ -212,7 +311,7 @@ function runreset() {
 }
 
 </script>
-
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML'></script>
 </body>
 
 </html>

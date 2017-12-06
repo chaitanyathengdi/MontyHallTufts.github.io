@@ -54,6 +54,31 @@
     align-items: center;
 }
 
+.AnalysisPar1, .AnalysisPar2 {
+  border: 7px solid black;
+  border-radius: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.AnalysisPar1 {
+  margin-bottom: 20px;
+}
+
+.AnalysisPar2 {
+  overflow: scroll;
+}
+
+.Analysis-cont {
+  background-color: #ffaf71;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 html {
   background-color: #9abfff
 }
