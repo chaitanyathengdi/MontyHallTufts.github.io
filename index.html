@@ -313,12 +313,13 @@ function runmain() {
   }
 
   sim = function() {
+    let totalgames = initcount - numgames + 1;
     if (winNoSwitch()) {win1++;}
     if (winSwitch()) {win2++;}
     if (numgames == 1) {iStr3 = "Done!"}
-    iStr1 = ((win1/(initcount - numgames)) * 100).toFixed(2).toString();
-    iStr2 = ((win2/(initcount - numgames)) * 100).toFixed(2).toString();
-    count.innerHTML = "Simulating Game: " + (initcount - numgames + 1).toString();
+    iStr1 = ((win1/totalgames) * 100).toFixed(2).toString();
+    iStr2 = ((win2/totalgames) * 100).toFixed(2).toString();
+    count.innerHTML = "Simulating Game: " + totalgames.toString();
     statusD.innerHTML = "Status: " + iStr3
     noswitch.innerHTML = "Wins: " + win1.toString() + ", %Win: " + iStr1 + "%";
     outswitch.innerHTML = "Wins: " + win2.toString() + ", %Win: " + iStr2 + "%";
